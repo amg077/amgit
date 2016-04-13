@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>It's me! Mario!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        body{
+            background-color: white;
+        }
+
+       #canvas{
+            width:50%; 
+            height:50%;
+            margin: 0 auto;
+            position: absolute;
+            top: -25%; 
+            left: -25%; 
+            border: 1 px solid red;
+                     
+}
+
+        #centrar{
+           position:absolute;
+           width:50%;
+           height:50%;
+           top:50%; 
+           left:50%;
+
+        }
+        
+        </style>
+    </head>
+    <body>
+        <div id="centrar" >
+            <canvas id="canvas"/>
+         </div>    
+            <script>
+            //que el canvas pueda ser de cualquier tamano,
+            //que el canvas pinte bien
+            var mario = [ ["-","-","-","-","gr","gr","gr","gr","gr","gr","-","-","-"],//1
+                          ["-","-","-","gr","gr","gr","gr","gr","gr","gr","gr","-","-"],//2
+                          ["-","pk","-","gr","br","br","br","br","br","br","gr","-","pk"],//3
+                          ["-","pk","-","br","br","br","br","br","br","br","br","-","pk"],//4
+                          ["-","pk","pk","br","pk","gr","pk","pk","gr","pk","br","pk","pk"],//5
+                          ["-","pk","pk","br","pk","br","pk","pk","br","pk","br","pk","pk"],//6
+                          ["-","pk","pk","pk","pk","pk","pk","pk","pk","pk","pk","pk","br"],//7
+                          ["-","-","-","gr","pk","pk","br","br","pk","pk","gr","br","br"],//8
+                          ["-","br","br","br","br","br","pk","pk","pk","gr","gr","gr","pk"],//9
+                          ["br","br","pk","br","br","br","br","gr","gr","gr","gr","gr","pk"],///10
+                          ["br","pk","pk","pk","br","br","pk","br","br","gr","gr","br","-"],//11
+                          ["br","br","pk","br","br","br","pk","gr","br","br","br","gr","-"],//12
+                          ["br","br","pk","br","br","br","pk","br","br","gr","gr","gr","-"],//13
+                          ["br","br","br","br","br","br","pk","gr","gr","gr","br","-","-"],//14
+                          ["br","pk","pk","pk","pk","pk","-","-","br","br","br","-","-"],//15
+                          ["-","-","-","-","-","-","-","-","br","br","br","-","-"],//16
+                          ];
+
+             document.write(mario.length);
+             document.write(mario[0].length);    
+             document.write(canvas.width);
+             document.write(canvas.height);  
+              
+              drawPixels(mario);
+    
+            
+            function drawPixels(drawing) {
+              var canvas= document.getElementById("canvas");
+              var ctx = canvas.getContext("2d");  
+              var pixelSizeX=canvas.height/drawing.length;
+              var pixelSizeY=canvas.height/drawing.length;
+              
+
+
+                for (y = 0; y < drawing.length; y++){
+                    for(x = 0; x < drawing[y].length; x++){  
+                      var actualizacion=0;
+                    }
+                      actualizacion+=drawing[y].length;
+                  }
+                      var anchoDibujo = pixelSizeX*actualizacion;
+
+                      var diferencia =(canvas.width-anchoDibujo)/2;
+          
+                      document.write(diferencia);      
+              
+                for (y = 0; y < drawing.length; y++){
+                    for(x = 0; x < drawing[y].length; x++){       
+                        var color;
+                        switch (drawing[y][x]) {
+                            case "rd":
+                                color = "red";    
+                            break;
+
+                            case "bl":
+                                color = "blue";
+                            break;
+
+                            case "br":
+                                color = "brown"; 
+                            break;
+
+                            case "yl":
+                                color = "yellow";
+                            break;  
+
+                            case "pk":
+                                color = "pink";
+                            break;    
+
+                            case "-":
+                                color = "white";
+                            break;
+
+                            case "bk":
+                                color = "black";
+                            break;
+                            
+                            case "gr":
+								color = "green";
+							break;	
+
+                            default:
+                                color = "purple";
+
+                        }
+                      
+                        ctx.fillStyle = color;   
+                        ctx.fillRect(
+                            diferencia+(pixelSizeX*x), 
+                            y * pixelSizeY, 
+                            pixelSizeX, 
+                            pixelSizeY
+                        );
+                        
+                    }
+                    
+                }
+                 
+              
+        }
+
+        </script>   
+    </body>

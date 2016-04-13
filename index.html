@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+  <link href="Imagenes/yerbabuena.png" rel="icon" sizes="96x96" type="image/png" />
+  <title>amgIT</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /><!--ancho de device y zoom inicial--><!-- Latest compiled and minified CSS -->
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /><!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body onload="frasesChidas()">
+  <nav class="navbar navbar-default"><!--Defino la barra de navegacion-->
+    <div class="container-fluid">
+      <div class="navbar-header"><a class="navbar-brand" href="#">Alexis Morales Gamboa</a></div>
+      <div>
+      <ul class="nav navbar-nav navbar-right">
+	    <li class="active"><a href="#">Home</a></li>
+	    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acerca de </a>
+	      <ul class="dropdown-menu">
+		  <li><a href="sobre_mi.html">Sobre mi</a></li>
+		  <li><a href="proyectos.html">Proyectos</a></li>
+		  <li><a href="hobbies.html">Hobbies</a></li>
+	     </ul>
+	    </li>
+	   <li><a href="http://blog.amgit.com.mx" target="_blank ">Blog</a></li>
+	   <li><a href="sitios.html">Sitios recomendados</a></li>
+	   <li><a href="contacto.html">Contacto</a></li>
+	   <li><a href="index_en.html"><img height="20" src="Imagenes/us.png" width="20" /> </a></li>
+	   <li><a> <img height="20" src="Imagenes/fr.png" width="20" /> </a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid bg-1 text-center"><img class="img-circle" height="300" src="Imagenes/yerbabuena.jpg" width="290" />
+    <h2>Profesionista de TI</h2>
+  </div>
+
+  <div class="container-fluid text-center">&nbsp;
+    <blockquote>
+      <h4 id="frases"></h4>
+      <footer id="autores"></footer>
+    </blockquote>
+  </div>
+</body>
+</html>

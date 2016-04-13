@@ -1,0 +1,23 @@
+.bg-1{
+  background-color:#0099FF;
+  color: #ffffff;
+}
+            
+.container-fluid{
+  padding-top: 20px;
+  padding-bottom: 20px;     
+}
+            
+.bg-2{
+  background-color:#1abc9c;
+  color: #ffffff;
+}
+
+.img-circle{
+  -webkit-transition: width 5s, height 5s,  -webkit-transform 5s;
+  transition: width 5s, height 5s,  transform 5s;   
+}
+.img-circle:hover{
+  -webkit-transform: rotate(360deg);
+  transform:rotate(360deg);
+}

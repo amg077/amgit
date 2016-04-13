@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>It's me! Mario!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <style>
+			body{
+            background-color: white;
+			}
+			
+			#canvas{
+            width:55%; 
+            height:55%;
+            margin: 0 auto;
+            position: absolute;
+            top: -25%; 
+            left: -25%; 
+            border: 1 px solid red;
+              -webkit-transition: width 3s, height 3s,  -webkit-transform 3s;
+            transition: width 3s, height 3s,  transform 3s;                
+			} 
+			
+			#canvas:hover{
+            width:70%;
+            height:70%;
+             -webkit-transform: rotate(360deg);
+            transform:rotate(360deg);
+			}       
+			
+			#centrar{
+           position:absolute;
+           width:50%;
+           height:50%;
+           top:50%; 
+           left:50%;
+		   }
+		   
+		   select,button{		
+			display: block;
+			margin: 0 auto;
+		   }
+        </style>
+    </head>
+    <body onresize="resizeCanvas()">
+        <form>
+            <select  id="personaje">
+                <option value="mario">Mario</option>
+                <option value="linkk">Link</option>
+                <option value="pacman">Pacman</option>
+            </select>    
+        </form>    
+        
+        <button onclick="borraDibujo();detectaDibujo();guardaDibujo()">Presiona</button>
+
+        <p id="resultado">fsda</p>
+        <!--<p id="resultado2">Aquí saldrá la figura</p>-->
+           
+        <div id="centrar" >
+            <canvas id="canvas" />
+         </div>    
+        <script>
+			
+			function borraDibujo(){
+				var canvas= document.getElementById("canvas");
+                var ctx = canvas.getContext("2d")
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+			}
+			
+			function detectaDibujo(){// Esta es la funcion que guarda el valor dependiendo del dibujo que selecciones
+             capturaDibujo = document.getElementById("personaje").selectedIndex;
+			}
+        
+			function guardaDibujo(){
+				 
+				document.getElementById("resultado").innerHTML=window.capturaDibujo;
+				var drawing;
+				
+				if(window.capturaDibujo==0){
+				
+				      var mario = [ 
+						  ["-","-","-","-","-","rd","rd","rd","rd","rd","rd","-","-","pk","pk","pk","-"],//1
+                          ["-","-","-","-","rd","rd","rd","rd","rd","rd","rd","rd","rd","rd","pk","pk","-"],//2
+                          ["-","-","-","-","br","br","br","pk","pk","pk","bk","pk","-","rd","rd","rd","-"],//3
+                          ["-","-","-","br","pk","br","pk","pk","pk","pk","bk","pk","pk","pk","rd","rd","-"],//4
+                          ["-","-","-","br","pk","br","br","pk","pk","pk","pk","bk","pk","pk","pk","rd","-"],//5
+                          ["-","-","-","br","br","pk","pk","pk","pk","pk","bk","bk","bk","bk","rd","-","-"],//6
+                          ["-","-","-","-","-","pk","pk","pk","pk","pk","pk","pk","pk","rd","rd","-","-"],//7
+                          ["-","-","rd","rd","rd","rd","rd","bl","rd","rd","rd","bl","rd","rd","-","-","br",],//8
+                          ["pk","pk","rd","rd","rd","rd","rd","rd","bl","rd","rd","rd","bl","-","-","br","br"],//9
+                          ["pk","pk","pk","rd","rd","rd","rd","rd","bl","bl","bl","bl","yl","bl","bl","br","br"],///10
+                          ["-","-","-","-","bl","rd","bl","bl","bl","yl","bl","bl","bl","bl","bl","br","br",],//11
+                          ["-","-","br","br","br","bl","bl","bl","bl","bl","bl","bl","bl","bl","bl","br","br",],//12
+                          ["-","br","br","br","bl","bl","bl","bl","bl","bl","bl","-","-","-","-","-","-"],//13
+                          ["-","br","br","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],//14
+                          ["-","br","br","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]//15
+                          ];
+                          
+                       drawing=mario;  
+                          
+                     //document.getElementById("resultado2").innerHTML=mario;     
+				}
+		
+				else{
+					if(window.capturaDibujo==2){
+					
+					   var pacman = [
+                         ["-","-","-","-","-","-","-","-","-","bk","bk","bk","bk","-","-","-","-","-","-","-"],//1
+                         ["-","-","-","-","-","-","bk","bk","bk","yl","yl","yl","yl","bk","bk","bk","-","-","-","-"],//2
+                         ["-","-","-","-","bk","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-"],//3
+                         ["-","-","-","bk","yl","yl","yl","yl","yl","yl","bk","bk","bk","yl","yl","yl","yl","yl","bk","-"],//4
+                         ["-","-","bk","yl","yl","yl","yl","yl","yl","yl","bk","bk","bk","yl","yl","yl","yl","yl","yl","bk"], //5
+                         ["-","-","bk","yl","yl","yl","yl","yl","yl","yl","bk","bk","bk","yl","yl","yl","yl","bk","bk","bk"], //6
+                         ["-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-"], //7
+                         ["-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-"], //8
+                         ["-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-","-","-"], //9
+                         ["bk","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-","-","-","-","-"], //10
+                         ["bk","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-","-","-","-","-","-","-"], //11
+                         ["bk","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-","-","-","-","-","-","-"], //12
+                         ["bk","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-","-","-","-","-"], //13
+                         ["-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-","-","-"], //14
+                         ["-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-","-","-"], //15
+                         ["-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-","-"], //16
+                         ["-","-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","bk"], //17
+                         ["-","-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk"], //18
+                         ["-","-","-","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","-"], //19
+                         ["-","-","-","-","bk","bk","yl","yl","yl","yl","yl","yl","yl","yl","yl","yl","bk","bk","-","-"], //20
+                         ["-","-","-","-","-","-","bk","bk","bk","yl","yl","yl","yl","bk","bk","bk","-","-","-","-"], //21
+                         ["-","-","-","-","-","-","-","-","bk","bk","bk","bk","bk","-","-","-","-","-","-","-"] //22
+						 ];
+						 
+						 drawing=pacman;
+                        
+                         //document.getElementById("resultado2").innerHTML=pacman;     
+					}
+					else{
+						
+						var linkk= [
+							["-","-","-","-","gr","gr","gr","gr","gr","gr","-","-","-"],//1
+							["-","-","-","gr","gr","gr","gr","gr","gr","gr","gr","-","-"],//2
+							["-","pk","-","gr","br","br","br","br","br","br","gr","-","pk"],//3
+							["-","pk","-","br","br","br","br","br","br","br","br","-","pk"],//4
+							["-","pk","pk","br","pk","gr","pk","pk","gr","pk","br","pk","pk"],//5
+							["-","pk","pk","br","pk","br","pk","pk","br","pk","br","pk","pk"],//6
+							["-","pk","pk","pk","pk","pk","pk","pk","pk","pk","pk","pk","br"],//7
+							["-","-","-","gr","pk","pk","br","br","pk","pk","gr","br","br"],//8
+							["-","br","br","br","br","br","pk","pk","pk","gr","gr","gr","pk"],//9
+							["br","br","pk","br","br","br","br","gr","gr","gr","gr","gr","pk"],///10
+							["br","pk","pk","pk","br","br","pk","br","br","gr","gr","br","-"],//11
+							["br","br","pk","br","br","br","pk","gr","br","br","br","gr","-"],//12
+							["br","br","pk","br","br","br","pk","br","br","gr","gr","gr","-"],//13
+							["br","br","br","br","br","br","pk","gr","gr","gr","br","-","-"],//14
+							["br","pk","pk","pk","pk","pk","-","-","br","br","br","-","-"],//15
+							["-","-","-","-","-","-","-","-","br","br","br","-","-"],//16
+							];
+							
+						   drawing=linkk;
+                        
+				
+						//document.getElementById("resultado2").innerHTML=linkk;     
+					}
+				
+				}
+				
+				canvas= document.getElementById("canvas");
+                 ctx = canvas.getContext("2d");  
+                 pixelSizeX=Math.floor(canvas.height/drawing.length);
+                 pixelSizeY=Math.floor(canvas.height/drawing.length);
+              
+                for (y = 0; y < drawing.length; y++){
+                    for(x = 0; x < drawing[y].length; x++){  
+                       actualizacion=0;
+                    }
+                      actualizacion+=drawing[y].length;
+                  }
+                       anchoDibujo = pixelSizeX*actualizacion;
+                      diferencia =Math.floor((canvas.width-anchoDibujo)/2);
+          
+                      //document.write(diferencia);      
+              
+                for (y = 0; y < drawing.length; y++){
+                    for(x = 0; x < drawing[y].length; x++){     
+						  
+						 
+                        switch (drawing[y][x]) {
+                            case "rd":
+                                color = "red";    
+                            break;
+                            case "bl":
+                                color = "blue";
+                            break;
+                            case "br":
+                                color = "brown"; 
+                            break;
+                            case "yl":
+                                color = "yellow";
+                            break;  
+                            case "pk":
+                                color = "pink";
+                            break;    
+                            case "-":
+                                color = "white";
+                            break;
+                            case "bk":
+                                color = "black";
+                            break;
+                            
+                            case "gr":
+								color= "green";
+							break;
+								
+                            default:
+                                color = "purple";
+                        }
+                      
+                        ctx.fillStyle = color;   
+                        ctx.fillRect(
+                            diferencia+(pixelSizeX*x), 
+                            y * pixelSizeY, 
+                            pixelSizeX, 
+                            pixelSizeY
+                        );
+                        
+                    }
+                    
+                }
+                 
+			} 
+			
+				function recarga(){
+				window.addEventListener("resize", resizeCanvas);
+			}
+			
+			 
+			function redraw(){
+
+
+				 /* window.ctx.fillStyle =window.color;   
+                        window.ctx.fillRect(
+                            window.diferencia+(window.pixelSizeX*window.x), 
+                            window.y * window.pixelSizeY, 
+                            window.pixelSizeX, 
+                            window.pixelSizeY);*/
+			}
+			
+			function resizeCanvas(){
+				
+            canvas = document.getElementById("canvas");
+
+            if(canvas.width<canvas.height){
+
+                canvas.width = canvas.height;
+            }
+
+            if(canvas.height<canvas.width){
+
+                canvas.height = canvas.width;
+            }
+
+            /*if (canvas.width  < window.innerWidth)
+            {
+                canvas.width  = window.innerWidth;
+            }
+
+            if (canvas.height < window.innerHeight)
+            {
+                canvas.height = window.innerHeight;
+            }
+        
+			*/	
+                    //redraw();
+                  //guardaDibujo():  
+
+			}
+			
+			
+        </script>
+        </body>
+</html>
